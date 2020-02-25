@@ -220,8 +220,17 @@ int main(int argc, char ** argv)
 
   // Declare the weights and twkdial arrays
   const int n_events = (const int) nev;
-  float weights  [n_events][n_points];
-  float twkdials [n_events][n_points];
+  //float weights  [n_events][n_points];
+  //float twkdials [n_events][n_points];
+  //Gardiner fix for allowing run over more than 250K events
+  float** weights = new float*[n_events];
+  for ( int e = 0; e < n_events; ++e ) {
+    weights[e] = new float[n_points];
+  }
+  float** twkdials = new float*[n_events];
+  for ( int e = 0; e < n_events; ++e ) {
+    twkdials[e] = new float[n_points];
+  }
 
   // Create a GReWeight object and add to it a set of weight calculators
 
@@ -401,7 +410,15 @@ int main(int argc, char ** argv)
   wght_file->Close();
 
   LOG("grwght1scan", pNOTICE)  << "Done!";
-
+ 
+  // Gardiner fix to allowing running over more than 250K events
+  for ( int e = 0; e < n_events; ++e ) {
+    delete [] weights[e];
+    delete [] twkdials[e];
+  }
+  delete [] weights;
+  delete [] twkdials;
+  
   return 0;
 }
 //___________________________________________________________________
