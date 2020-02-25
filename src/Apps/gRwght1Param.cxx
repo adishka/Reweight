@@ -125,6 +125,8 @@
 
 #include "RwCalculators/GReWeightINukeParams.h"
 #include "RwCalculators/GReWeightNuXSecNC.h"
+
+#include "RwCalculators/GReWeightXSecEMQE.h"
 #include "RwCalculators/GReWeightXSecEmpiricalMEC.h"
 
 
@@ -249,6 +251,7 @@ int main(int argc, char ** argv)
   rw.AdoptWghtCalc( "xsec_nc",         new GReWeightNuXSecNC        );
   rw.AdoptWghtCalc( "res_dk",          new GReWeightResonanceDecay  );
   rw.AdoptWghtCalc( "xsec_empmec",     new GReWeightXSecEmpiricalMEC);
+  rw.AdoptWghtCalc( "xsec_emqe",       new GReWeightXSecEMQE);
 
   // Get GSystSet and include the (single) input systematic parameter
 
@@ -256,6 +259,19 @@ int main(int argc, char ** argv)
   syst.Init(gOptSyst);
 
   // Fine-tune weight calculators
+
+  /*if ( gOptSyst == kXSecTwkDial_EmpMEC_Mass ||
+       gOptSyst == kXSecTwkDial_EmpMEC_Width ||
+       gOptSyst == kXSecTwkDial_EmpMEC_Mq2d ||
+       gOptSyst == kXSecTwkDial_EmpMEC_FracPN_NC ||
+       gOptSyst == kXSecTwkDial_EmpMEC_FracPN_CC ||
+       gOptSyst == kXSecTwkDial_EmpMEC_FracNCQE ||
+       gOptSyst == kXSecTwkDial_EmpMEC_FracCCQE ||
+       gOptSyst == kXSecTwkDial_EmpMEC_FracPN_EM ||
+       gOptSyst == kXSecTwkDial_EmpMEC_FracEMQE ) {
+     GReWeightXSecEmpiricalMEC * rwempmec = 
+	dynamic_cast<GReWeightXSecEmpiricalMEC *> (rw.WghtCalc("xsec_empmec"));
+  }*/
 
   if ( gOptSyst == kXSecTwkDial_MaCCQE ) {
      // By default GReWeightNuXSecCCQE is in `NormAndMaShape' mode
@@ -326,17 +342,17 @@ int main(int argc, char ** argv)
           twkdials [idx][ith_dial] = twk_dial;
 
           // Reweight this event?
-          int nupdg = event.Probe()->Pdg();
-          bool do_reweight = gOptNu.ExistsInPDGCodeList(nupdg);
+          //int nupdg = event.Probe()->Pdg();
+          //bool do_reweight = gOptNu.ExistsInPDGCodeList(nupdg);
 
           // Calculate weight
           double wght=1.;
-          if ( do_reweight ) {
-             wght = rw.CalcWeight(event);
-          }
+          //if ( do_reweight ) {
+            wght = rw.CalcWeight(event);
+          //}
 
           // Print/store
-          LOG("grwght1scan", pDEBUG)
+          LOG("grwght1scan", pINFO)
               << "Overall weight = " << wght;
           weights[idx][ith_dial] = wght;
 
@@ -543,12 +559,12 @@ void GetCommandLineArgs(int argc, char ** argv)
   if( parser.OptionExists("min-tweak") ) {
      gOptMinTwk =  parser.ArgAsDouble("min-tweak");
   } else {
-     gOptMinTwk = -5;
+     gOptMinTwk = -1;
   }
   if( parser.OptionExists("max-tweak") ) {
      gOptMaxTwk =  parser.ArgAsDouble("max-tweak");
   } else {
-     gOptMaxTwk = -5;
+     gOptMaxTwk = 1;
   }
 
 }

@@ -51,6 +51,7 @@ typedef enum EGSyst {
   kXSecTwkDial_MaCCQEshape,       ///< tweak Ma CCQE, affects dsigma(CCQE)/dQ2 in shape only (normalized to constant integral)
   kXSecTwkDial_MaCCQE,            ///< tweak Ma CCQE, affects dsigma(CCQE)/dQ2 both in shape and normalization
   kXSecTwkDial_VecFFCCQEshape,    ///< tweak elastic nucleon form factors (BBA/default -> dipole) - shape only effect of dsigma(CCQE)/dQ2
+  kXSecTwkDial_FFEMQEshape,    ///< tweak elastic nucleon form factors (BBA/default -> dipole) - shape only effect of dsigma(CCQE)/dQ2
   // Resonance neutrino-production tweaking parameters:
   kXSecTwkDial_NormCCRES,         ///< tweak CCRES normalization
   kXSecTwkDial_MaCCRESshape,      ///< tweak Ma CCRES, affects d2sigma(CCRES)/dWdQ2 in shape only (normalized to constant integral)
@@ -173,6 +174,7 @@ typedef enum EGSyst {
   kXSecTwkDial_EmpMEC_Mq2d,
   kXSecTwkDial_EmpMEC_Mass,
   kXSecTwkDial_EmpMEC_Width,
+  kXSecTwkDial_EmpMEC_APower,
   kXSecTwkDial_EmpMEC_FracPN_NC,
   kXSecTwkDial_EmpMEC_FracPN_CC,
   kXSecTwkDial_EmpMEC_FracCCQE,
@@ -211,6 +213,7 @@ public:
      case ( kXSecTwkDial_ZExpA4CCQE       ) : return "ZExpA4CCQE";           break;
      case ( kXSecTwkDial_AxFFCCQEshape    ) : return "AxFFCCQEshape";        break;
      case ( kXSecTwkDial_VecFFCCQEshape   ) : return "VecFFCCQEshape";       break;
+     case ( kXSecTwkDial_FFEMQEshape      ) : return "FFEMQEshape";       break;
      case ( kXSecTwkDial_NormCCRES        ) : return "NormCCRES";            break;
      case ( kXSecTwkDial_MaCCRESshape     ) : return "MaCCRESshape";         break;
      case ( kXSecTwkDial_MvCCRESshape     ) : return "MvCCRESshape";         break;
@@ -271,15 +274,16 @@ public:
      case ( kRDcyTwkDial_BR1gamma         ) : return "RDecBR1gamma";         break;
      case ( kRDcyTwkDial_BR1eta           ) : return "RDecBR1eta";           break;
      case ( kRDcyTwkDial_Theta_Delta2Npi  ) : return "Theta_Delta2Npi";      break;
-     case ( kXSecTwkDial_EmpMEC_Mq2d      ) : return "EmpMEC_Mq2d";          break;
-     case ( kXSecTwkDial_EmpMEC_Mass      ) : return "EmpMEC_Mass";          break;
-     case ( kXSecTwkDial_EmpMEC_Width     ) : return "EmpMEC_Width";         break;
-     case ( kXSecTwkDial_EmpMEC_FracPN_NC ) : return "EmpMEC_FracPN_NC";     break;
-     case ( kXSecTwkDial_EmpMEC_FracPN_CC ) : return "EmpMEC_FracPN_CC";     break;
-     case ( kXSecTwkDial_EmpMEC_FracCCQE  ) : return "EmpMEC_FracCCQE";      break;
-     case ( kXSecTwkDial_EmpMEC_FracNCQE  ) : return "EmpMEC_FracNCQE";      break;
-     case ( kXSecTwkDial_EmpMEC_FracPN_EM ) : return "EmpMEC_FracPN_EM";     break;
-     case ( kXSecTwkDial_EmpMEC_FracEMQE  ) : return "EmpMEC_FracEMQE";      break;
+     case ( kXSecTwkDial_EmpMEC_Mq2d      ) : return "EmpiricalMEC-Mq2d";          break;
+     case ( kXSecTwkDial_EmpMEC_Mass      ) : return "EmpiricalMEC-Mass";          break;
+     case ( kXSecTwkDial_EmpMEC_Width     ) : return "EmpiricalMEC-Width";         break;
+     case ( kXSecTwkDial_EmpMEC_APower    ) : return "EmpiricalMEC-APower";      break;
+     case ( kXSecTwkDial_EmpMEC_FracPN_NC ) : return "EmpiricalMEC-FracPN_NC";     break;
+     case ( kXSecTwkDial_EmpMEC_FracPN_CC ) : return "EmpiricalMEC-FracPN_CC";     break;
+     case ( kXSecTwkDial_EmpMEC_FracCCQE  ) : return "EmpiricalMEC-FracCCQE";      break;
+     case ( kXSecTwkDial_EmpMEC_FracNCQE  ) : return "EmpiricalMEC-FracNCQE";      break;
+     case ( kXSecTwkDial_EmpMEC_FracPN_EM ) : return "EmpiricalMEC-FracPN_EM";     break;
+     case ( kXSecTwkDial_EmpMEC_FracEMQE  ) : return "EmpiricalMEC-FracEMQE";      break;
 
      default:
        return "-";
@@ -306,6 +310,7 @@ public:
        kXSecTwkDial_ZExpA4CCQE,
        kXSecTwkDial_AxFFCCQEshape,
        kXSecTwkDial_VecFFCCQEshape,
+       kXSecTwkDial_FFEMQEshape,
        kXSecTwkDial_NormCCRES,
        kXSecTwkDial_MaCCRESshape,
        kXSecTwkDial_MvCCRESshape,
@@ -368,6 +373,7 @@ public:
        kXSecTwkDial_EmpMEC_Mq2d,
        kXSecTwkDial_EmpMEC_Mass,
        kXSecTwkDial_EmpMEC_Width,
+       kXSecTwkDial_EmpMEC_APower,
        kXSecTwkDial_EmpMEC_FracPN_NC,
        kXSecTwkDial_EmpMEC_FracPN_CC,
        kXSecTwkDial_EmpMEC_FracCCQE,

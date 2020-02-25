@@ -161,5 +161,17 @@ void GSystUncertainty::SetDefaults(void)
 
   this->SetUncertainty( kRDcyTwkDial_BR1gamma,       0.50, 0.50);
   this->SetUncertainty( kRDcyTwkDial_BR1eta,         0.50, 0.50);
+  
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_Mq2d,    0.02, 0.02);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_Mass,    0.2, 0.2);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_Width,   0.02, 0.02);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_APower,   0.05, 0.05);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_FracCCQE,   0.03, 0.03);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_FracNCQE,   0.03, 0.03);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_FracEMQE,   0.5, 3.);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_FracPN_NC,   0.1, 0.1);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_FracPN_CC,   0.1, 0.1);
+  this->SetUncertainty( kXSecTwkDial_EmpMEC_FracPN_EM,   0.1, 0.1);
+
 }
 //____________________________________________________________________________
