@@ -40,7 +40,7 @@ void GReWeightNuXSecHelper::Initialize(void)
   this->DiffCrossSecType( kScQuasiElastic,       kPSQ2fE  );
   this->DiffCrossSecType( kScDeepInelastic,      kPSxyfE  );
   this->DiffCrossSecType( kScResonant,           kPSWQ2fE );
-  this->DiffCrossSecType( kScCoherentProduction, kPSxyfE  );
+  //this->DiffCrossSecType( kScCoherentProduction, kPSxyfE  );
 }
 //___________________________________________________________________________
 void GReWeightNuXSecHelper::HandleInitState(const InitialState & is)

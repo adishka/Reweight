@@ -103,8 +103,8 @@ void GSystUncertainty::SetDefaults(void)
   this->SetUncertainty( kXSecTwkDial_MvNCRESshape,   0.05, 0.05);
   this->SetUncertainty( kXSecTwkDial_MaNCRES,        0.20, 0.20);
   this->SetUncertainty( kXSecTwkDial_MvNCRES,        0.10, 0.10);
-  this->SetUncertainty( kXSecTwkDial_MaCOHpi,        0.40, 0.40);
-  this->SetUncertainty( kXSecTwkDial_R0COHpi,        0.10, 0.10);
+  //this->SetUncertainty( kXSecTwkDial_MaCOHpi,        0.40, 0.40);
+  //this->SetUncertainty( kXSecTwkDial_R0COHpi,        0.10, 0.10);
   this->SetUncertainty( kXSecTwkDial_RvpCC1pi,       0.50, 0.50);
   this->SetUncertainty( kXSecTwkDial_RvpCC2pi,       0.50, 0.50);
   this->SetUncertainty( kXSecTwkDial_RvpNC1pi,       0.50, 0.50);

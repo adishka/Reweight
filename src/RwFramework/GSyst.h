@@ -64,8 +64,8 @@ typedef enum EGSyst {
   kXSecTwkDial_MaNCRES,           ///< tweak Ma NCRES, affects d2sigma(NCRES)/dWdQ2 both in shape and normalization
   kXSecTwkDial_MvNCRES,           ///< tweak Mv NCRES, affects d2sigma(NCRES)/dWdQ2 both in shape and normalization
   // Coherent pion production tweaking parameters:
-  kXSecTwkDial_MaCOHpi,           ///< tweak Ma for COH pion production
-  kXSecTwkDial_R0COHpi,           ///< tweak R0 for COH pion production
+  //kXSecTwkDial_MaCOHpi,           ///< tweak Ma for COH pion production
+  //kXSecTwkDial_R0COHpi,           ///< tweak R0 for COH pion production
   // Non-resonance background tweaking parameters:
   kXSecTwkDial_RvpCC1pi,          ///< tweak the 1pi non-RES bkg in the RES region, for v+p CC
   kXSecTwkDial_RvpCC2pi,          ///< tweak the 2pi non-RES bkg in the RES region, for v+p CC
@@ -224,8 +224,8 @@ public:
      case ( kXSecTwkDial_MvNCRESshape     ) : return "MvNCRESshape";         break;
      case ( kXSecTwkDial_MaNCRES          ) : return "MaNCRES";              break;
      case ( kXSecTwkDial_MvNCRES          ) : return "MvNCRES";              break;
-     case ( kXSecTwkDial_MaCOHpi          ) : return "MaCOHpi";              break;
-     case ( kXSecTwkDial_R0COHpi          ) : return "R0COHpi";              break;
+     //case ( kXSecTwkDial_MaCOHpi          ) : return "MaCOHpi";              break;
+     //case ( kXSecTwkDial_R0COHpi          ) : return "R0COHpi";              break;
      case ( kXSecTwkDial_RvpCC1pi         ) : return "NonRESBGvpCC1pi";      break;
      case ( kXSecTwkDial_RvpCC2pi         ) : return "NonRESBGvpCC2pi";      break;
      case ( kXSecTwkDial_RvpNC1pi         ) : return "NonRESBGvpNC1pi";      break;
@@ -321,8 +321,8 @@ public:
        kXSecTwkDial_MvNCRESshape,
        kXSecTwkDial_MaNCRES,
        kXSecTwkDial_MvNCRES,
-       kXSecTwkDial_MaCOHpi,
-       kXSecTwkDial_R0COHpi,
+       //kXSecTwkDial_MaCOHpi,
+       //kXSecTwkDial_R0COHpi,
        kXSecTwkDial_RvpCC1pi,
        kXSecTwkDial_RvpCC2pi,
        kXSecTwkDial_RvpNC1pi,

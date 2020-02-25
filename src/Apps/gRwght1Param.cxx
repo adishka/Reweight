@@ -110,7 +110,7 @@
 #include "RwCalculators/GReWeightNuXSecNCEL.h"
 #include "RwCalculators/GReWeightNuXSecCCQE.h"
 #include "RwCalculators/GReWeightNuXSecCCRES.h"
-#include "RwCalculators/GReWeightNuXSecCOH.h"
+//#include "RwCalculators/GReWeightNuXSecCOH.h"
 #include "RwCalculators/GReWeightNonResonanceBkg.h"
 #include "RwCalculators/GReWeightFGM.h"
 #include "RwCalculators/GReWeightDISNuclMod.h"
@@ -234,7 +234,7 @@ int main(int argc, char ** argv)
   rw.AdoptWghtCalc( "xsec_ccres",      new GReWeightNuXSecCCRES     );
   rw.AdoptWghtCalc( "xsec_ncres",      new GReWeightNuXSecNCRES     );
   rw.AdoptWghtCalc( "xsec_nonresbkg",  new GReWeightNonResonanceBkg );
-  rw.AdoptWghtCalc( "xsec_coh",        new GReWeightNuXSecCOH       );
+//  rw.AdoptWghtCalc( "xsec_coh",        new GReWeightNuXSecCOH       );
   rw.AdoptWghtCalc( "xsec_dis",        new GReWeightNuXSecDIS       );
   rw.AdoptWghtCalc( "nuclear_qe",      new GReWeightFGM             );
   rw.AdoptWghtCalc( "hadro_res_decay", new GReWeightResonanceDecay  );
